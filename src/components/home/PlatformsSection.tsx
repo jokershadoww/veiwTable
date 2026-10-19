@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Coins, CreditCard, Hourglass, Search, Stamp, Table2 } from "lucide-react";
+import Link from "next/link";
+import { Coins, CreditCard, ExternalLink, Hourglass, Search, Stamp, Table2 } from "lucide-react";
 import type { Card, Platform, Seal } from "@/lib/types";
 import { PLATFORM_TYPES } from "@/lib/types";
 import { TYPE_STYLES, formatNum } from "@/lib/ui";
@@ -179,8 +180,19 @@ export default function PlatformsSection({
                         <span className="chip bg-white/8 text-slate-500">متاح</span>
                       )}
                     </td>
-                    <td className="max-w-[180px]">
-                      <p className="truncate text-xs text-slate-400">{p.notes || "—"}</p>
+                    <td className="max-w-[220px]">
+                      <div className="flex items-center gap-2">
+                        <p className="min-w-0 flex-1 truncate text-xs text-slate-400">
+                          {p.notes || "—"}
+                        </p>
+                        <Link
+                          href={`/platform/${p.id}`}
+                          title="صفحة تفاصيل المنصة"
+                          className="icon-btn h-8 w-8 shrink-0 text-sky-300 hover:text-sky-200"
+                        >
+                          <ExternalLink size={14} />
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -233,7 +245,16 @@ export default function PlatformsSection({
 
                 <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3">
                   <span className="text-[11px] font-bold text-slate-500">التفاصيل</span>
-                  <ActionIcons p={p} />
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/platform/${p.id}`}
+                      title="صفحة تفاصيل المنصة"
+                      className="icon-btn h-8 w-8 text-sky-300 hover:text-sky-200"
+                    >
+                      <ExternalLink size={14} />
+                    </Link>
+                    <ActionIcons p={p} />
+                  </div>
                 </div>
               </div>
             ))}
