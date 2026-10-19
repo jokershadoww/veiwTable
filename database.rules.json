@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// قواعد Realtime Database لمشروع "جدول منصات"
+// ملاحظة: القراءة والكتابة مسموحتان للجميع لتسهيل البدء (الدخول للأدمن عبر لوحة الموقع).
+// قبل النشر للعامة: اجعل الكتابة محمية (مثلاً عبر Firebase Auth + custom claims).
+{
+  "rules": {
+    "platforms": { ".read": true, ".write": true },
+    "seals": { ".read": true, ".write": true },
+    "cards": { ".read": true, ".write": true },
+    "links": { ".read": true, ".write": true },
+    "registrations": { ".read": true, ".write": true }
+  }
+}
